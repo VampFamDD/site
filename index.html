@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Избирательная система Российской Федерации</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+      --footer-text: #94a3b8;
+      --radius: 12px;
+      --max-w: 1150px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 80px;
+    }
+    section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    section p, section li {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08);
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+    .card ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .card li { margin-bottom: 0.4rem; }
+
+    .img-placeholder {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 100%);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-weight: 500;
+      margin: 1rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .img-placeholder::after {
+      content: "📷 Тематическое изображение";
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .highlight {
+      background: #eff6ff;
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1rem 0;
+    }
+
+    footer {
+      background: #f1f5f9;
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .copyright {
+      color: var(--footer-text);
+      font-size: 0.85rem;
+      opacity: 0.75;
+      margin-top: 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .nav-container { flex-direction: column; gap: 1rem; }
+      nav ul { justify-content: center; gap: 0.75rem; }
+      section h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <a href="#" class="logo">🗳️ Избирательная система РФ</a>
+    <nav>
+      <ul>
+        <li><a href="#intro">Введение</a></li>
+        <li><a href="#concepts">Понятия</a></li>
+        <li><a href="#principles">Принципы</a></li>
+        <li><a href="#legal">Законодательство</a></li>
+        <li><a href="#stages">Этапы</a></li>
+        <li><a href="#systems">Типы систем</a></li>
+        <li><a href="#referendums">Референдумы</a></li>
+        <li><a href="#memo">Памятка</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="intro">
+    <h2>Введение</h2>
+<img src="https://i127.fastpic.org/big/2026/0419/f1/324cb4a4d7a1df983c5de727167ee2f1.jpg?md5=Xuwrvw_LvYJyeteoBxskfQ&amp;expires=1776600000" alt="описание" style="width:100%; border-radius:12px; margin: 1rem 0;">
+    <p>Избирательная система Российской Федерации — это установленный комплекс правовых норм, правил и процедур, обеспечивающих организацию и проведение выборов органов государственной власти и местного самоуправления, а также референдумов. Она гарантирует волеизъявление граждан, формирование представительных институтов и легитимность власти.</p>
+  </section>
+
+  <section id="concepts">
+    <h2>Основные понятия</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>🏛️ Избирательная система</h3>
+        <p>Совокупность установленных законом правил, определяющих порядок формирования органов власти через выборы. Включает методы распределения мандатов, порядок голосования, регистрацию кандидатов и подведение итогов.</p>
+      </div>
+      <div class="card">
+        <h3>📜 Избирательное право</h3>
+        <p>Совокупность правовых норм, регулирующих отношения, возникающие в процессе избрания депутатов, должностных лиц и проведения референдумов. Делится на активное (право голосовать) и пассивное (право быть избранным).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="principles">
+    <h2>Принципы избирательного права</h2>
+    <p>Согласно Конституции РФ и Федеральному закону № 67-ФЗ, избирательная система строится на следующих базовых принципах:</p>
+    <div class="grid grid-3" style="margin-top: 1rem;">
+      <div class="card"><h3>🌍 Всеобщее</h3><p>Каждый гражданин, достигший 18 лет, имеет право участвовать в выборах (за исключением лиц, признанных судом недееспособными или содержащихся в местах лишения свободы по приговору суда).</p></div>
+      <div class="card"><h3>⚖️ Равное</h3><p>Все избиратели участвуют в выборах на равных основаниях; каждый голосует один раз, и каждый голос имеет равный вес.</p></div>
+      <div class="card"><h3>🔍 Прямое</h3><p>Депутаты и должностные лица избираются непосредственно гражданами, а не через промежуточные органы.</p></div>
+      <div class="card"><h3>🔒 Тайное голосование</h3><p>Голосование проводится таким образом, чтобы исключить возможность контроля за волеизъявлением избирателя.</p></div>
+      <div class="card"><h3>🗳️ Свободное</h3><p>Граждане свободно участвуют в выборах, свободно выражают свою волю без какого-либо принуждения.</p></div>
+      <div class="card"><h3>✅ Достоверное</h3><p>Результаты выборов должны точно отражать реальное волеизъявление избирателей.</p></div>
+    </div>
+  </section>
+
+  <section id="legal">
+    <h2>Нормативно-правовая база</h2>
+    <p>Избирательная система РФ регулируется следующей системой документов:</p>
+    <div class="highlight">
+      <ul>
+        <li><strong>Конституция Российской Федерации</strong> (ст. 3, 32, 33)</li>
+        <li><strong>Федеральный закон от 12.06.2002 № 67-ФЗ</strong> «Об основных гарантиях избирательных прав и права на участие в референдуме граждан РФ»</li>
+        <li><strong>Федеральный закон от 10.01.2003 № 4-ФЗ</strong> «О выборах Президента Российской Федерации»</li>
+        <li><strong>Федеральный закон от 22.02.2019 № 20-ФЗ</strong> «О выборах депутатов Государственной Думы Федерального Собрания РФ»</li>
+        <li><strong>Федеральный закон от 09.04.1995 № 49-ФЗ</strong> «О референдуме Российской Федерации»</li>
+        <li>Кодексы РФ (КоАП РФ ст. 5.11–5.23, УК РФ ст. 141–142)</li>
+        <li>Законы субъектов РФ о выборах и референдумах</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="stages">
+    <h2>Этапы избирательного процесса</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>📋 Подготовка</h3>
+        <ul>
+          <li>Назначение даты голосования</li>
+          <li>Создание избирательных комиссий</li>
+          <li>Утверждение границ округов и участков</li>
+          <li>Финансовое обеспечение</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>📝 Регистрация</h3>
+        <ul>
+          <li>Выдвижение и регистрация кандидатов/списков</li>
+          <li>Сбор подписей (при необходимости)</li>
+          <li>Включение в бюллетень</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>📢 Агитация</h3>
+        <ul>
+          <li>Официальная агитация в СМИ</li>
+          <li>Дебаты и встречи с избирателями</li>
+          <li>Запрет агитации в день голосования</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🗳️ Голосование и подведение итогов</h3>
+        <ul>
+          <li>Голосование на участках / досрочно / удалённо</li>
+          <li>Протоколы комиссий</li>
+          <li>Установление результатов</li>
+          <li>Опубликование и вступление в силу</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="systems">
+    <h2>Типы избирательных систем</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>🏁 Мажоритарная система</h3>
+        <p>Победитель определяется большинством голосов в одномандатном или многомандатном округе.</p>
+        <ul>
+          <li><strong>Абсолютное большинство</strong>: требуется более 50% голосов (часто с вторым туром)</li>
+          <li><strong>Относительное большинство</strong>: побеждает кандидат с наибольшим числом голосов</li>
+          <li>Применяется при выборах Президента, глав регионов, в отдельных парламентах</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>📊 Пропорциональная система</h3>
+        <p>Места распределяются между партиями пропорционально полученному числу голосов.</p>
+        <ul>
+          <li>Голосование за партийные списки</li>
+          <li>Избирательный барьер (в РФ обычно 5%)</li>
+          <li>Региональные группы кандидатов</li>
+          <li>Применяется в Государственной Думе, региональных парламентах</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🔀 Смешанная система</h3>
+        <p>Частично депутаты избираются по партийным спискам, частично — по одномандатным округам.</p>
+        <ul>
+          <li>ГД РФ: 225 по спискам, 225 по округам</li>
+          <li>Баланс между партийной ответственностью и территориальным представительством</li>
+          <li>Сложнее в организации, но отражает разнообразие мнений</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="referendums">
+    <h2>Референдумы и выборы по системам</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>🗳️ Как проходят референдумы</h3>
+        <p>В РФ действуют федеральные, региональные и местные референдумы. Процедура включает:</p>
+        <ul>
+          <li>Инициативу граждан или органов власти</li>
+          <li>Подготовку вопросов и регистрацию комиссии</li>
+          <li>Информационное обеспечение</li>
+          <li>Голосование «да»/«нет»</li>
+          <li>Регистрацию результатов (требуется явка ≥ 50% + 1 голос от числа избирателей)</li>
+          <li>Запрет на отмену прав и свобод, изменение территориальной целостности</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>📉 Особенности проведения выборов по типам систем</h3>
+        <ul>
+          <li><strong>Пропорциональная</strong>: бюллетени с партийными списками, распределение мандатов методом Гамье/Д'Ондта, барьер для допуска, контроль за региональными группами</li>
+          <li><strong>Мажоритарная</strong>: один победитель в округе, возможный второй тур при отсутствии абсолютного большинства, упор на персональные программы кандидатов</li>
+          <li><strong>Смешанная</strong>: разделение ресурсов между партийной и округной агитацией, двойная регистрация, сложная математика распределения мандатов</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПАМЯТКА -->
+  <section id="memo">
+    <h2>📋 Памятка для будущего избирателя</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>🔍 Перед голосованием</h3>
+        <ul>
+          <li>Проверьте свой избирательный участок на сайте <strong>ЦИК РФ</strong> (<a href="http://cikrf.ru" target="_blank" style="color:var(--accent);">cikrf.ru</a>) или через Госуслуги</li>
+          <li>Убедитесь, что вы включены в списки избирателей (обычно за 20 дней до выборов)</li>
+          <li>Подготовьте паспорт гражданина РФ (основной документ для голосования)</li>
+          <li>Изучите кандидатов и программы партий из официальных бюллетеней или сайта ЦИК</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🗳️ В день голосования</h3>
+        <ul>
+          <li>Приходите в свой участок в указанное время (обычно с 8:00 до 20:00)</li>
+          <li>Пройдите регистрацию в комиссии, предъявив паспорт</li>
+          <li>Голосуйте в кабинке, ставя отметку в одном бюллетене</li>
+          <li>Соблюдайте тишину и порядок у урны для голосования</li>
+          <li>При невозможности прийти в день выборов оформите досрочное/заочное голосование заранее</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>📞 Полезные ресурсы</h3>
+        <ul>
+          <li>Официальный сайт ЦИК РФ: <a href="http://cikrf.ru" target="_blank" style="color:var(--accent);">cikrf.ru</a></li>
+          <li>Госуслуги: проверка участка, подача заявки на голосование вне участка</li>
+          <li>Телефоны территориальных избирательных комиссий и горячие линии указаны на портале ЦИК</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>⚖️ Ваши права и обязанности</h3>
+        <ul>
+          <li>Право наблюдать за процедурой голосования и подсчётом бюллетеней</li>
+          <li>Право подать жалобу в ТИК или суд при выявлении нарушений</li>
+          <li>Запрет на агитацию и распространение любых материалов в день голосования</li>
+          <li>Обязанность соблюдать порядок в помещении участка и не мешать другим избирателям</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>✍2026 Избирательная система в Российской Федерации. Информационный проект.</p>
+  <p class="copyright">Данный информационный ресурс разработан в рамках информационно-социального проекта по обществознанию на тему: «Избирательная система в Российской Федерации».</p>
+</footer>
+
+<script>
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(sec => {
+    sec.style.opacity = '0';
+    sec.style.transform = 'translateY(20px)';
+    sec.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(sec);
+  });
+</script>
+
+</body>
+</html>
